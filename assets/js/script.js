@@ -23,6 +23,22 @@ function generatePassword() {
     }
   }
 
+  // These if statements determine the user choices and then append them to the blank array
+  if (lowerCase) {
+    selectedArray = selectedArray.concat(lowerCaseSet);
+  }
+  if (upperCase) {
+    selectedArray = selectedArray.concat(upperCaseSet);
+  }
+  if (numericCharacters) {
+    selectedArray = selectedArray.concat(numSet);
+  }
+  if (specialCharacters) {
+    selectedArray = selectedArray.concat(specialSet);
+  }
+
+  var passwordString = "";
+  
   
 }
 // Get references to the #generate element
