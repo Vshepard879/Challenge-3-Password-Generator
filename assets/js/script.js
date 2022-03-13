@@ -38,8 +38,46 @@ function generatePassword() {
   }
 
   var passwordString = "";
-  
-  
+  // This loop will take the appended array, randomly select elements and generate the randomized password as a string.
+  for (var i = 0; i < passwordLength; i++) {
+    passwordString += selectedArray[Math.floor(Math.random() * (selectedArray.length))];
+  }
+
+  return passwordString;
+}
+
+function getPasswordLength() {
+  var userChoice = 0;
+  while ((userChoice < 8) || (userChoice > 128)) {
+    userChoice = parseInt(window.prompt("Enter the number of characters between 8 and 128: "));
+
+    // Checking here to make sure the user entered a number and not a letter.
+    if (isNaN(userChoice)) {
+      // This will reset the choice value to 0 so it can restart the loop if the user entered anything besides a number.
+      userChoice = 0;
+    }
+  }
+
+  return userChoice;
+}
+
+// Added this function to help simplify code 
+function getChoice(currentOption) {
+  var userChoice = "a",
+    messagePrompt = "";
+  var messagePrompt = ('Would you like '.concat(currentOption));
+  messagePrompt = messagePrompt.concat(' characters (y/n)?');
+  // This loop ensures the user enters a valid response.
+  while (userChoice = "a") {
+    userChoice = (window.prompt(messagePrompt));
+    // Added the line below for ease of usability on mobile devices as some of them automatically capitalize when entering input.
+    userChoice = userChoice.toLowerCase();
+    if (userChoice == "y") {
+      return true;
+    } else if (userChoice == "n") {
+      return false;
+    }
+  }
 }
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
